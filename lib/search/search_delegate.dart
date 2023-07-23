@@ -31,14 +31,12 @@ class MovieSearchDelegate extends SearchDelegate {
 
   @override
   Widget buildResults(BuildContext context) {
-    return Text('buildResults');
+    return const Text('buildResults');
   }
 
   Widget _emptyContainer() {
-    return Container(
-      child: const Center(
-        child: Icon(Icons.movie_creation_outlined, color: Colors.black12, size: 130),
-      )
+    return const Center(
+      child: Icon(Icons.movie_creation_outlined, color: Colors.black12, size: 130),
     );
   }
 

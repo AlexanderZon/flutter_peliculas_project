@@ -20,11 +20,10 @@ class MovieSlider extends StatefulWidget {
 
 class _MovieSliderState extends State<MovieSlider> {
 
-  final ScrollController scrollController = new ScrollController();
+  final ScrollController scrollController = ScrollController();
 
   @override
   void initState() {
-    // TODO: implement initState
     super.initState();
 
     scrollController.addListener(() {
@@ -36,7 +35,7 @@ class _MovieSliderState extends State<MovieSlider> {
   
   @override
   Widget build(BuildContext context) {
-    return Container(
+    return SizedBox(
       width: double.infinity,
       height: 270,
       child: Column(

@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/rendering.dart';
 import 'package:project_1/models/models.dart';
 import 'package:project_1/providers/movies_provider.dart';
 import 'package:provider/provider.dart';
@@ -8,7 +7,7 @@ class CastingCard extends StatelessWidget {
 
   final int movieId;
 
-  const CastingCard(this.movieId);
+  const CastingCard(this.movieId, {super.key});
 
   @override
   Widget build(BuildContext context) {

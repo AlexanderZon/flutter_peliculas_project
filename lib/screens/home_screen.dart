@@ -1,7 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-
-import 'package:project_1/models/models.dart';
 import 'package:project_1/providers/movies_provider.dart';
 import 'package:project_1/widgets/widgets.dart';
 import 'package:project_1/search/search_delegate.dart';

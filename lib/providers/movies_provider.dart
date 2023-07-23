@@ -19,10 +19,10 @@ class MoviesProvider extends ChangeNotifier {
   int _popularPages = 0;
 
   final debouncer = Debouncer(
-    duration: Duration(milliseconds: 500),
+    duration: const Duration(milliseconds: 500),
   );
 
-  final StreamController<List<Movie>> _suggestionStreamController = new StreamController.broadcast();
+  final StreamController<List<Movie>> _suggestionStreamController = StreamController.broadcast();
   Stream<List<Movie>> get suggestionStream => _suggestionStreamController.stream;
 
   MoviesProvider() {
@@ -42,7 +42,7 @@ class MoviesProvider extends ChangeNotifier {
       return response.body;
 
     } catch (e) {
-      print(e);
+      // print(e);
     }
   }
 
@@ -84,7 +84,7 @@ class MoviesProvider extends ChangeNotifier {
     final url = Uri.https( _baseUrl, '3/search/movie', {
       'api_key': _apiKey, 
       'language': _lang, 
-      'query': '$query'
+      'query': query
     });
     final response = await http.get(url);
     final searchResponse = SearchMoviesResponse.fromRawJson(response.body);
@@ -95,14 +95,14 @@ class MoviesProvider extends ChangeNotifier {
   void getSuggestionByQuery(String query) {
     debouncer.value = '';
     debouncer.onValue = (value) async {
-      final results = await this.getOnSearchMovies(value);
-      this._suggestionStreamController.add(results);
+      final results = await getOnSearchMovies(value);
+      _suggestionStreamController.add(results);
     };
 
-    final timer = Timer.periodic(Duration(milliseconds: 300), (timer) { 
+    final timer = Timer.periodic(const Duration(milliseconds: 300), (timer) { 
       debouncer.value = query;
     });
 
-    Future.delayed(Duration(milliseconds: 301)).then((value) => timer.cancel());
+    Future.delayed(const Duration(milliseconds: 301)).then((value) => timer.cancel());
   }
 }
